@@ -1,20 +1,16 @@
 
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { useRouter } from 'next/router' ;
+import React from 'react';
+
+
 import db from '../db.json';
-import Widget from '../src/components/Widget'
-import QuizBackground from '../src/components/QuizBackground'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
-import QuizLogo from '../src/components/Quizlogo'
+import Widget from '../src/components/Widget';
+import QuizBackground from '../src/components/QuizBackground';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import QuizLogo from '../src/components/Quizlogo';
 
-
-
-// const BackgroundImage = styled.div`
-//   background-image: url(${db.bg});
-//   flex: 1;
-//   background-size: cover;
-//   background-position: center;
-// `;
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -28,6 +24,9 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = React.useState('X');
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -38,6 +37,22 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p> 
+             <form onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              router.push(`/quiz?name=${name}`);
+              }}
+              >
+
+             <input 
+               onChange={function (infosDoEvento){
+                console.log(infosDoEvento.target.value);
+                setName(infosDoEvento.target.value);
+               }}
+               placeholder="Nome do condenado"/>
+               <button type="submit" disabled={name.length === 0}>
+               Eu, {name}, aceito os riscos
+            </button>
+            </form>
           </Widget.Content>
         </Widget>
         <Widget>
