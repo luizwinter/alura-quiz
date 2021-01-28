@@ -8,7 +8,7 @@ margin-top: 24px;
 margin-bottom: 24px;
 border: 1px solid ${({ theme }) => theme.colors.primary};
 background-color: ${({ theme }) => {
-        return theme.colors.mainBg;
+        return theme.colors.trans_bg;
     }};
 border-radius: 25px;
 overflow: hidden;
@@ -56,41 +56,25 @@ ul {
   padding: 0;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-  }
-  form input {
-    padding: 12px;
-    border: 1px solid rgba(255,255,255, .1);
-    border-radius: .2rem;
-    margin-bottom: 2rem;
-    color: white;
-    background: transparent;
-    &::placeholder{
-      color: rgba(255,255,255, .4);
-    
-    }
-  }
-  button {
-    font-weight: 70;
-    color: #FFF;
-    padding: 10px;
-    background: ${({ theme }) => theme.colors.primary};
-    border: none;
-    border-radius: 10px;
-    transition: all .2s;
-    cursor: pointer;
-    &:hover {
-      background:  ${({ theme }) => theme.colors.secondary};
-    }
-  } 
-
-
-
 `;
 
-
+Widget.Topic = styled.a`
+  outline: 0;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.contrastText};
+  background-color: ${({ theme }) => `${theme.colors.primary}40`};
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  transition: .3s;
+  display: block;
+  
+  &:hover,
+  &:focus {
+    opacity: .5;
+  }
+`;
 
 
 
