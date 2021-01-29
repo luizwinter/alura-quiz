@@ -30,7 +30,9 @@ export default function Home() {
   const [name, setName] = React.useState('');
 
   return (
+    
     <QuizBackground backgroundImage={db.bg}>
+      
       <QuizContainer>
         <QuizLogo />
         <Widget>
@@ -52,7 +54,7 @@ export default function Home() {
                 placeholder="Nome do condenado"
                 value ={name}
                 />
-                <p>Eu, {name}, aceito o desafio </p>
+                <p>Eu, {name}, aceito as consequências </p>
                <Button type="submit" disabled={name.length === 0}>
                 Enviar †
                </Button>
